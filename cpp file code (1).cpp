@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <sstream>
 #include <ctime>
-#include <cmath>    // for ceil
+#include <cmath>
 using namespace std;
 
 const int MAX_PARK = 50;
@@ -120,8 +120,7 @@ void checkOut(Vehicle floor[], int& count, int rate, string number, int exitHour
             cout << "Vehicle " << number << " exited at "
                  << exitHour << ":" << (exitMinute < 10 ? "0" : "") << exitMinute
                  << ". Fee: Rs. " << fee << endl;
-
-            // Log to file
+            
             ofstream fout("parking_log.txt", ios::app);
             fout << number << " " << floor[i].type << " "
                  << floor[i].entryHour << ":" << (floor[i].entryMinute < 10 ? "0" : "") << floor[i].entryMinute
@@ -140,7 +139,6 @@ void exitVehicle() {
     cout << "Enter vehicle number to checkout: ";
     cin >> number;
 
-    // Get current system time
     time_t now = time(0);
     tm* localTime = localtime(&now);
     int exitHour = localTime->tm_hour;
